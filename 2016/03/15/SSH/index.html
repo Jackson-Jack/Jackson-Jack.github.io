@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://qingboshare.com/2016/03/15/SSH/index.html">
 <meta property="og:site_name" content="技术分享云">
 <meta property="og:description" content="一、SSH登陆的原理1. 什么是SSHSSH（安全外壳协议）为 Secure Shell 的缩写，一种网络协议，用于计算机之间的加密通信。">
-<meta property="og:updated_time" content="2016-12-05T14:43:02.000Z">
+<meta property="og:updated_time" content="2017-03-13T14:03:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSH 相关知识">
 <meta name="twitter:description" content="一、SSH登陆的原理1. 什么是SSHSSH（安全外壳协议）为 Secure Shell 的缩写，一种网络协议，用于计算机之间的加密通信。">
@@ -361,9 +361,11 @@
 <p>由此可见，只要多台电脑上的的公钥Public Key(id_rsa.pub)和私钥Private Key(id_rsa)是一样的，对于服务端来说着其实就是同一个客户端。所以可以通过复制公钥Public Key(id_rsa.pub)和私钥Private Key(id_rsa)到多台电脑来实现共享登陆。</p>
 <h2 id="二、如何生成SSH-key"><a href="#二、如何生成SSH-key" class="headerlink" title="二、如何生成SSH key"></a>二、如何生成SSH key</h2><ol>
 <li>在生成SSH key之前，避免可能把之前的key覆盖掉，首先可以检查以前的key是否存在，有则可以跳过第二步。（如何查看？直接在终端输入“ls ~/.ssh”查看里面是否有id_rsa和id_rsa.pub 文件）</li>
-<li><p>生成SSH key很容易，只需要提供一个邮箱账号即可，在终端输入：</p>
+<li><p>生成SSH key很容易，只需要提供一个邮箱账号即可，切换到~/.ssh文件目录下，在终端输入：</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C <span class="string">"your_email@example.com"</span></div></pre></td></tr></table></figure>
 </li>
+</ol>
+<ol>
 <li><p>将生成的id_rsa.pub文件内容复制到相应的网站里（比如公司服务器，Github，Coding等），提供一个很方便的拷贝语句</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pbcopy &lt; ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure>
 </li>
