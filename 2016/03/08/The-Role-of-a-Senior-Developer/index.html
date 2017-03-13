@@ -1,0 +1,869 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="工作了五年的工程师，算不算高级开发者？归类开发者不是简单地看工作年限，因为经验这种东西千金难换但又一文不值。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转】一个大神开发者的使命感究竟应该是什么">
+<meta property="og:url" content="http://qingboshare.com/2016/03/08/The-Role-of-a-Senior-Developer/index.html">
+<meta property="og:site_name" content="技术分享云">
+<meta property="og:description" content="工作了五年的工程师，算不算高级开发者？归类开发者不是简单地看工作年限，因为经验这种东西千金难换但又一文不值。">
+<meta property="og:updated_time" content="2016-12-05T14:43:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【转】一个大神开发者的使命感究竟应该是什么">
+<meta name="twitter:description" content="工作了五年的工程师，算不算高级开发者？归类开发者不是简单地看工作年限，因为经验这种东西千金难换但又一文不值。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 137485344,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> 【转】一个大神开发者的使命感究竟应该是什么 | 技术分享云 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', '90530775-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?33e630acf8f8611c5a6d2f4ca7a566e4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1261213791&web_id=1261213791" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">技术分享云</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                【转】一个大神开发者的使命感究竟应该是什么
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-08T00:00:00+08:00" content="2016-03-08">
+              2016-03-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/程序人生/" itemprop="url" rel="index">
+                    <span itemprop="name">程序人生</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/08/The-Role-of-a-Senior-Developer/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/08/The-Role-of-a-Senior-Developer/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/08/The-Role-of-a-Senior-Developer/" class="leancloud_visitors" data-flag-title="【转】一个大神开发者的使命感究竟应该是什么">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>工作了五年的工程师，算不算高级开发者？归类开发者不是简单地看工作年限，因为经验这种东西千金难换但又一文不值。</p>
+</blockquote>
+<a id="more"></a>
+<p>我们现在工作的行业很奇怪。明明每年都有新的从业人员涌入人才市场，但企业依旧诉苦自己迫切需要大量的开发。这种问题存在已久，而且已经越发严峻。</p>
+<p>开发者这个行业非常年轻，也面临着很严重的人才短缺问题。大部分的软件开发项目无疾而终，原因是后期开支过于庞大。那些行业里的大佬是怎么建议我们的，他们说「世界上永远存在解决问题的办法，但我们还是会遇到各种难题。因为除非我们真正去尝试解决，否则永远不知道哪种方法奏效。」</p>
+<p>认识一个现实吧，当你从事开发工作三年以上，就可以称呼自己为「高级开发者」。但实际上，有些人只是在这个位置上混三年，而他们只是虚有其表，水平严重不符合职位。</p>
+<p>这确实是我对同行的评语。</p>
+<p>首先，根据知识和经验把人分为初级开发者、中级开发者，和高级开发者，这是非常一刀切地分类。有些人可能只是在一个位置上混了十年，然而他的成长甚至没有另一个人一年所学到和经验多。</p>
+<h2 id="开发者的高速成长期："><a href="#开发者的高速成长期：" class="headerlink" title="开发者的高速成长期："></a>开发者的高速成长期：</h2><p>身为一个程序员，我们生活在一个 IT 系统越发复杂且多变化的时代。有时候执行一个简单的开源项目，都需要精准定义并耗费大量时间专注任务。尤其是当你身为一个新晋程序员，或者对手下的数据库还很陌生的时候。</p>
+<p>菜鸟程序员很难当。你可能刚从一个还不错的大学毕业，你觉得你已经掌握了基本的常识。但突然间，你在工作上面临的是另一套崭新的知识。在很长时间内，你都对自己所要做的工作没有任何头绪。而对于上司提出的要求，你似乎只能妥协，而且没办法作出有效质疑。</p>
+<p>在这个阶段，你必须要做的是专注。而且尽可能地放开心胸，去努力学习。初级开发者在工作之初，需要大量的练习，指导、监管，以及需要一个能帮助他们的老师。缺乏以上的任何条件，初级开发者都很难很难迈过这个初学者门槛。</p>
+<p>我最近遇到一个家伙，他已经有十年的软件构造经验，但是我很遗憾地发现，他的真实水平依旧只是初级开发者。你可以说这个阶段，是战略上的积累状态，但就是要学习加积累，积累再学习，缺一不可。</p>
+<p>初级开发者必须要专注代码本身，在这个阶段，不要分心想任何其他乱七八糟的事情。在开发一个项目时，如果身为程序员想的是「我想让自己的代码在别人眼里看起来漂漂亮亮的」，而不是「我做的东西应该以用户感受第一」，那么他本身就是一个初级开发。</p>
+<p>一个好的开发者可以出色地完成任务，而且不仅如此，他们能以较短时间出色完成任何，后期也会维护好。</p>
+<h2 id="中级开发者的瓶颈期间"><a href="#中级开发者的瓶颈期间" class="headerlink" title="中级开发者的瓶颈期间"></a>中级开发者的瓶颈期间</h2><p>当一个开发者脱离菜鸟阶段成长为中级开发者时，他们能够在项目失败时反省整个过程（通常，他们会看自己所做工作部分）。而且会意识到，比起匆匆忙忙埋头苦干完成任务，应该在项目最初就建立起一些规矩。甚至于如果最开始有人指正他们，整个项目就能在最初避免走向失败。</p>
+<p>而中级开发者还会体验另一个独特心理过程，那就是当他们回首一年前的工作。发现尽管当时认为「哎呦，自己做的还不错」，但现在会发现「这都什么玩意」啊。</p>
+<p>一个中级开发者是有能力通过以往经验、文本资料、项目团队讨论等方式，摸索出「正确方法」做事的人。在这个阶段，学习构建软件的理论比学习构建代码更重要（后者应该在学校就掌握了）。</p>
+<p>另一方面，中级开发者假如自作主张起来，造成的危害比初级开发者更大。初级开发者只会堆砌算法，一个好的中级开发者努力方向是「模式设计」和「范畴驱动设计」。这些技能是他们搭造 OO 系统的必备过程，学习完这些理论知识如果灵活运用，可以让他们更好地构造项目。但如果僵硬使用，也会危害整个项目。</p>
+<p>有的时候，让一名中级开发者搭造系统，他耗费的时间可能比初级开发者更长，而且更糟的情况是他可能带整个团队走向迷途。很可悲的是，很多项目开发之所以走向失败，因为领队者自己只是一个中级开发者，他们缺乏和高级开发者工作的珍贵经验。团队领导自己，而且团队里其他人都没有意识到这点。</p>
+<p>中级开发者很清楚自己在团队中起到的角色，能认识到他们给团队工作带来的价值。一个好的中级开发者知道代码是用来解决问题的，而不是用来终结问题的。然而，中级开发者总容易陷入一种认知上的金字塔，那就是他们会遵循一些「正确的方式」去解决问题。</p>
+<p>一个好的中级开发者需要少而精的监管。他们在代码构造方向非常可靠，而且会在讨论设计的过程中发挥重要作用。中级开发者是团队中的「发动机」。但是，如果进一步的指导和更高级别的监管仍然是必不可少。</p>
+<h2 id="高级，甚至是大神开发者需要满足的条件"><a href="#高级，甚至是大神开发者需要满足的条件" class="headerlink" title="高级，甚至是大神开发者需要满足的条件"></a>高级，甚至是大神开发者需要满足的条件</h2><p>一个高级开发者，不夸张地说，他能记住自己每次的错误。他们甚至能在设计或者编写代码的时候，就能预见到很多失败。他们会对错误进行非常敏锐地反馈，用一种诚实的方法去评估自己的成功和失败。身为高级开发者，他会更倾向于热爱复杂问题，但会痴迷于简洁地解决它。</p>
+<p>高级开发者不会给其他开发者划分等级。与之相比，他更多的是懂得。因为懂得，所以理解每个人在每个阶段都有长处和短处。而他们也比别人更了解自己的长处和短处，力求把自己的优势最大化。</p>
+<p>一个高级开发者会懂得，所有理论基础都有背景支持。他们不会执着于「对的方式」去搭造软件，而是把理论灵活运用于实际，理论可以变通用于为客户、团队和组织需要服务的工具。</p>
+<p>高级开发者会在项目过程中，设身处地了解客户想要什么样的工作结果，以及他们的喜好。毕竟这些东西，比开发者个人的偏好和成功更重要。他们永远不会说「那不是我的工作」，也永远不会推搡任务和责任。</p>
+<p>资深开发者会懂得一件事，那就是他们的工作是为了客户提供解决方案，而不是埋头写代码。而一位资深开发者永远会把自己团队能给顾客带来多少价值，放在考核标准。而不是把自己的努力和客户需求放在对等的 PK 赛场里。</p>
+<p>诚然，因为这是一份工作，所以中间的过程总会非常枯燥和无聊。但资深开发者会退一步，思考怎么能解决和打破这些无聊的问题。他们会评估本源问题，直接解决它。或者他们会把枯燥情绪放在旁边，修复日常必须要面对的问题。</p>
+<p>资深开发者也会懂得团队工作的高效。没有人能自己做一切工作，他们会致力于提升自己团队的效率。他们把提高团队效率所做的行为，视为提高自己软实力的一部分。</p>
+<p>资深开发者懂得，领导力不仅仅只是权力，也不仅仅只是控制力。权力不是交通棒，而是一种服务意识。</p>
+<p>如果你的团队中缺乏高级开发者，那这个项目基本都无一例外走向失败。拥有中级开发者能让你做事情非常快，但是在工作中你会发现，项目不仅仅只是搭造和维护程序。最终你只能关闭网站，或者用比预期中更高昂的价格维护它。只有高级开发者能选择技术和网站，而不是任由他们来伤害你。</p>
+<p>很多需求很简单，但大多数简单需求后面，隐藏更复杂的需求。</p>
+<p>而现实情况是，我自己很厌倦以工作时限来分类开发者。是的，工作经验能告诉你很多事情，但通常提供的都是无意义的信息。甚至于这些信息，也必须要结合很多背景来判断。</p>
+<p>更重要的是，我们行业里需要新鲜的血液，需要招收那些刚从大学毕业充满激情的年轻人。而即使给程序员划分种类，也不可仅仅只看工作经验。实际上我们招收程序员前，应该先思考团队都需要那些人才。毕竟，我们招收的人才是为团队服务。当你招聘到错误的人选，不过是给团队和项目帮倒忙。</p>
+<p>本文来源：<a href="http://mattbriggs.net/blog/2015/06/01/the-role-of-a-senior-developer/" target="_blank" rel="external">mattbriggs</a> 译文创见首发 由TECH2IPO/创见 假冒爱丽丝编译</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jackson wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>如果你觉得我的文章还不错，欢迎打赏～</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Jackson WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="Jackson Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/03/NSAssert/" rel="next" title="有关NSAssert相关知识点">
+                <i class="fa fa-chevron-left"></i> 有关NSAssert相关知识点
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/15/SSH/" rel="prev" title="SSH 相关知识">
+                SSH 相关知识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/03/08/The-Role-of-a-Senior-Developer/"
+     data-title="【转】一个大神开发者的使命感究竟应该是什么"
+     data-content=""
+     data-url="http://qingboshare.com/2016/03/08/The-Role-of-a-Senior-Developer/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/08/The-Role-of-a-Senior-Developer/"
+           data-title="【转】一个大神开发者的使命感究竟应该是什么" data-url="http://qingboshare.com/2016/03/08/The-Role-of-a-Senior-Developer/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favicon.png"
+               alt="Jackson" />
+          <p class="site-author-name" itemprop="name">Jackson</p>
+          <p class="site-description motion-element" itemprop="description">个人博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Jackson-Jack" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发者的高速成长期："><span class="nav-number">1.</span> <span class="nav-text">开发者的高速成长期：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中级开发者的瓶颈期间"><span class="nav-number">2.</span> <span class="nav-text">中级开发者的瓶颈期间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级，甚至是大神开发者需要满足的条件"><span class="nav-number">3.</span> <span class="nav-text">高级，甚至是大神开发者需要满足的条件</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackson</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+
+<div class="translate-style">
+  繁/简：<a id="translateLink" href="javascript:translatePage();">繁體
+  </a>
+</div>
+
+<script type="text/javascript" src="http://www.qingboshare.com/js/src/tw_cn.js"></script>
+<script type="text/javascript">
+var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+var cookieDomain = "http://www.qingboshare.com/"; //Cookie地址, 一定要设定, 通常为你的网址
+var msgToTraditionalChinese = "繁體"; //此处可以更改为你想要显示的文字
+var msgToSimplifiedChinese = "简体"; //同上，但两处均不建议更改
+var translateButtonId = "translateLink"; //默认互换id
+translateInitilization();
+</script>
+
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"qingboshare"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("pIQtM6SEA14KA8faJC1wmGxF-gzGzoHsz", "25DWxe2gh6l00jg6ArRwdovQ");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

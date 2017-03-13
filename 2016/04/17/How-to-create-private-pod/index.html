@@ -1,0 +1,886 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="privateSpec," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本文写的不是很详细，只是记录自己操作的一个大致过程。更加详细的操作，大家不妨参考使用Cocoapods创建私有podspec，我也是按照上面一步一步操作的，只不过个人觉得那个排版看起来真的不太友好。如果英文不错的话，其实我更建议大家看看下面的英文参考链接。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何创建一个私有pod库">
+<meta property="og:url" content="http://qingboshare.com/2016/04/17/How-to-create-private-pod/index.html">
+<meta property="og:site_name" content="技术分享云">
+<meta property="og:description" content="本文写的不是很详细，只是记录自己操作的一个大致过程。更加详细的操作，大家不妨参考使用Cocoapods创建私有podspec，我也是按照上面一步一步操作的，只不过个人觉得那个排版看起来真的不太友好。如果英文不错的话，其实我更建议大家看看下面的英文参考链接。">
+<meta property="og:image" content="http://7xrmkz.com1.z0.glb.clouddn.com/image%2Farticle_private_podspec_01.png">
+<meta property="og:image" content="http://7xrmkz.com1.z0.glb.clouddn.com/image%2Farticle_private_podspec_02.png">
+<meta property="og:image" content="http://7xrmkz.com1.z0.glb.clouddn.com/image%2Farticle_private_podspec_03.png">
+<meta property="og:image" content="http://7xrmkz.com1.z0.glb.clouddn.com/image%2Farticle_private_podspec_04.png">
+<meta property="og:updated_time" content="2017-02-08T02:27:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何创建一个私有pod库">
+<meta name="twitter:description" content="本文写的不是很详细，只是记录自己操作的一个大致过程。更加详细的操作，大家不妨参考使用Cocoapods创建私有podspec，我也是按照上面一步一步操作的，只不过个人觉得那个排版看起来真的不太友好。如果英文不错的话，其实我更建议大家看看下面的英文参考链接。">
+<meta name="twitter:image" content="http://7xrmkz.com1.z0.glb.clouddn.com/image%2Farticle_private_podspec_01.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 137485344,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> 如何创建一个私有pod库 | 技术分享云 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', '90530775-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?33e630acf8f8611c5a6d2f4ca7a566e4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1261213791&web_id=1261213791" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">技术分享云</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                如何创建一个私有pod库
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-17T00:00:00+08:00" content="2016-04-17">
+              2016-04-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/CocoaPods/" itemprop="url" rel="index">
+                    <span itemprop="name">CocoaPods</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/17/How-to-create-private-pod/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/How-to-create-private-pod/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/17/How-to-create-private-pod/" class="leancloud_visitors" data-flag-title="如何创建一个私有pod库">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文写的不是很详细，只是记录自己操作的一个大致过程。更加详细的操作，大家不妨参考<a href="http://blog.wtlucky.com/blog/2015/02/26/create-private-podspec/" target="_blank" rel="external">使用Cocoapods创建私有podspec</a>，我也是按照上面一步一步操作的，只不过个人觉得那个排版看起来真的不太友好。如果英文不错的话，其实我更建议大家看看下面的英文参考链接。</p>
+<a id="more"></a>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>首先创建两个Git仓库，一个用来存放私有Spec Repo，另一个则存放我们私有的类库。因为Github上面私有库是要收费的，所以我选择了Coding</p>
+<h3 id="创建私有Spec-Repo"><a href="#创建私有Spec-Repo" class="headerlink" title="创建私有Spec Repo"></a>创建私有Spec Repo</h3><ol>
+<li><p>创建本地私有Spec Repo，在终端输入下面命令即可</p>
+ <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># pod repo <span class="keyword">add</span> [<span class="keyword">Private</span> Repo Name] [Coding HTTPS clone URL]</div><div class="line">$ pod repo <span class="keyword">add</span> DQBSpecs https:<span class="comment">//git.coding.net/qingbo/DQBSpecs.git</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>输完命令运行后，就在<code>~/.cocoapods/repos/</code>目录下自动生成了一个名为DQBSpecs的本地私有Spec Repo.</p>
+</li>
+</ol>
+<h3 id="创建Pod项目工程文件"><a href="#创建Pod项目工程文件" class="headerlink" title="创建Pod项目工程文件"></a>创建Pod项目工程文件</h3><p>如果是有现有的组件项目，并且在Git的版本管理下，那么这一步就算完成了，可以直接进行下一步了。</p>
+<p>如果你的组件还在你冗余庞大的项目中，需要拆分出来或者需要自己从零开始创建一个组件库，那么建议你使用Cocoapods提供的一个工具将这一步与下一步结合起来做。</p>
+<p>现在来说一下这个工具，相关的文档介绍是<a href="http://guides.cocoapods.org/making/using-pod-lib-create" target="_blank" rel="external">Using Pod Lib Create</a>，就拿我创建的DQBLibrary为例子具体讲一下这里是如何操作的。</p>
+<p>首先cd到要创建项目的目录下，然后执行</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod <span class="class"><span class="keyword">lib</span> <span class="title">create</span> <span class="title">DQBLibrary</span></span></div></pre></td></tr></table></figure>
+<p>接下来会出现几个选项，输入你所期望的就OK啦，附上我的选项截图：<br><img src="http://7xrmkz.com1.z0.glb.clouddn.com/image%2Farticle_private_podspec_01.png" alt=""><br><img src="http://7xrmkz.com1.z0.glb.clouddn.com/image%2Farticle_private_podspec_02.png" alt=""></p>
+<h3 id="创建podspec文件"><a href="#创建podspec文件" class="headerlink" title="创建podspec文件"></a>创建podspec文件</h3><p>如果现在有了现成的项目（是指不是通过<code>pod lib create XXXX</code>来创建的项目，如果是通过<code>pod lib create</code>命令创建的项目默认就会生成一个podspec文件）那么就需要给这个项目创建一个podspec文件，创建它需要执行Cocoapods的另外一个命令，<a href="http://guides.cocoapods.org/making/specs-and-specs-repo.html" target="_blank" rel="external">官方文档</a>在这里</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>pod spec create YourLibrary git<span class="variable">@xxxxx</span>/YourLibrary.git</div></pre></td></tr></table></figure>
+<p>执行完之后，就创建了一个podspec文件，它其中会包含很多内容，可以按照需求进行编辑，没用的删掉。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">  Pod::Spec.new <span class="keyword">do</span> <span class="params">|s|</span></div><div class="line">  s.name             = <span class="string">"DQBLibrary"</span>    <span class="comment">#名称</span></div><div class="line">  s.version          = <span class="string">"0.1.0"</span>             <span class="comment">#版本号</span></div><div class="line">  s.summary          = <span class="string">"Just Testing."</span>     <span class="comment">#简短介绍，下面是详细介绍</span></div><div class="line">  s.description      = <span class="string">&lt;&lt;-DESC</span></div><div class="line">                       Testing Private Podspec.</div><div class="line"> </div><div class="line">                       * Markdown format.</div><div class="line">                       * Don't worry about the indent, we strip it!</div><div class="line">                       DESC</div><div class="line">  s.homepage         = <span class="string">"https://coding.net/u/qingbo/p/DQBLibrary"</span>                           <span class="comment">#主页,这里要填写可以访问到的地址，不然验证不通过</span></div><div class="line">  <span class="comment"># s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"           #截图</span></div><div class="line">  s.license          = <span class="string">'MIT'</span>              <span class="comment">#开源协议</span></div><div class="line">  s.author           = &#123; <span class="string">"DQB"</span> =&gt; <span class="string">"dqb1690@163.com"</span> &#125; <span class="comment">#作者信息</span></div><div class="line">  s.source           = &#123; <span class="symbol">:git</span> =&gt; <span class="string">"https://git.coding.net/qingbo/DQBLibrary.git"</span>, <span class="symbol">:tag</span> =&gt; s.version.to_s &#125;      <span class="comment">#项目地址，这里不支持ssh的地址，验证不通过，只支持HTTP和HTTPS，最好使用HTTPS</span></div><div class="line">  <span class="comment"># s.social_media_url = 'https://twitter.com/&lt;twitter_username&gt;'                       #多媒体介绍地址</span></div><div class="line"> </div><div class="line">  s.platform     = <span class="symbol">:ios</span>, <span class="string">'7.0'</span>            <span class="comment">#支持的平台及版本</span></div><div class="line">  s.requires_arc = <span class="literal">true</span>                   <span class="comment">#是否使用ARC，如果指定具体文件，则具体的问题使用ARC</span></div><div class="line"> </div><div class="line">  s.source_files = <span class="string">'DQBLibrary/Classes/**/*'</span>     <span class="comment">#代码源文件地址，**/*表示Classes目录及其子目录下所有文件，如果有多个目录下则用逗号分开，如果需要在项目中分组显示，这里也要做相应的设置</span></div><div class="line">  s.resource_bundles = &#123;</div><div class="line">    <span class="string">'DQBLibrary'</span> =&gt; [<span class="string">'DQBLibrary/Assets/*.png'</span>]</div><div class="line">  &#125;                                       <span class="comment">#资源文件地址</span></div><div class="line"> </div><div class="line">  <span class="comment"># s.public_header_files = 'Pod/Classes/**/*.h'   #公开头文件地址</span></div><div class="line">  <span class="comment"># s.frameworks = 'UIKit', 'MapKit'               #所需的framework，多个用逗号隔开</span></div><div class="line">  s.dependency <span class="string">'AFNetworking'</span>, <span class="string">'~&gt; 2.3'</span>   <span class="comment">#依赖关系，该项目所依赖的其他库，如果有多个需要填写多个s.dependency</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>编辑完成之后使用验证命令验证一下</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod <span class="class"><span class="keyword">lib</span> <span class="title">lint</span></span></div></pre></td></tr></table></figure>
+<p><img src="http://7xrmkz.com1.z0.glb.clouddn.com/image%2Farticle_private_podspec_03.png" alt=""></p>
+<h3 id="向Spec-Repo提交podspec"><a href="#向Spec-Repo提交podspec" class="headerlink" title="向Spec Repo提交podspec"></a>向Spec Repo提交podspec</h3><p>向Spec Repo提交podspec需要完成两点一个是podspec必须通过验证无误，在一个就是删掉无用的注释（这个不是必须的，为了规范还是删掉吧）。 向我们的私有Spec Repo提交podspec只需要一个命令</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod repo <span class="keyword">push </span>DQBSpecs DQBLibrary.podspec</div></pre></td></tr></table></figure>
+<p>完成之后这个组件库就添加到我们的私有Spec Repo中了，可以进入到~/.cocoapods/repos/DQBSpecs目录下查看</p>
+<p>再去看我们的Spec Repo远端仓库，也有了一次提交，这个podspec也已经被Push上去了。</p>
+<p>至此，我们的这个组件库就已经制作添加完成了，使用pod search命令就可以查到我们自己的库了</p>
+<p><img src="http://7xrmkz.com1.z0.glb.clouddn.com/image%2Farticle_private_podspec_04.png" alt=""></p>
+<p>这里说的是添加到私有的Repo，如果要添加到Cocoapods的官方库了，可以使用trunk工具，具体可以查看官方文档。</p>
+<h3 id="使用制作好的Pod"><a href="#使用制作好的Pod" class="headerlink" title="使用制作好的Pod"></a>使用制作好的Pod</h3><p>在完成这一系列步骤之后，我们就可以在正式项目中使用这个私有的Pod了,我们需要在podfile文件顶端中多定义一个source，该source地址是我们私有git地址，示例代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">source</span> <span class="string">'https://github.com/CocoaPods/Specs.git'</span> <span class="comment"># 官方库</span></div><div class="line"><span class="built_in">source</span> <span class="string">'https://git.coding.net/qingbo/DQBLibrary.git'</span> <span class="comment"># 私有库</span></div><div class="line"></div><div class="line">pod <span class="string">'DQBLibrary'</span>, :git =&gt; <span class="string">'git@git.coding.net:qingbo/DQBLibrary.git'</span>, :tag =&gt; <span class="string">"0.1.1"</span></div></pre></td></tr></table></figure>
+<h3 id="更新podspec文件"><a href="#更新podspec文件" class="headerlink" title="更新podspec文件"></a>更新podspec文件</h3><p>首先修改工程里的podspec文件，然后<code>pod install</code>，将变动全部提交至对应的git服务器（工程文件对应的git地址，并非Spec文件对应的git地址），并添加一个新的tag值。然后<code>pod lib lint</code>先验证一下，再进行下面更新操作：</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod repo <span class="keyword">push</span> DQBSpecs PodTestLibrary.podspec  <span class="meta">#pod私有库 前面是本地Repo名字 后面是podspec名字</span></div></pre></td></tr></table></figure>
+<p>更新成功后，你可以在<code>~/.cocoapods/repos/</code>的私有库目录下查看新增了一个文件夹名为tag，该目录下生成了对应tag的podspec文件。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://blog.wtlucky.com/blog/2015/02/26/create-private-podspec/" target="_blank" rel="external">使用Cocoapods创建私有podspec</a> </li>
+<li><a href="http://guides.cocoapods.org/making/private-cocoapods.html" target="_blank" rel="external">Private Pods</a></li>
+<li><a href="http://blog.grio.com/2014/11/creating-a-private-cocoapod.html" target="_blank" rel="external">Creating a Private CocoaPod</a></li>
+<li><a href="https://objectpartners.com/2014/06/25/developing-private-in-house-libraries-with-cocoapods/" target="_blank" rel="external">Developing Private In-House Libraries with CocoaPods</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jackson wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>如果你觉得我的文章还不错，欢迎打赏～</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Jackson WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="Jackson Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/privateSpec/" rel="tag">#privateSpec</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/10/ReactiveCocoa-Basic-Use/" rel="next" title="ReactiveCocoa基础知识">
+                <i class="fa fa-chevron-left"></i> ReactiveCocoa基础知识
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/09/common-mathematical-functions/" rel="prev" title="iOS 常用数学函数">
+                iOS 常用数学函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/04/17/How-to-create-private-pod/"
+     data-title="如何创建一个私有pod库"
+     data-content=""
+     data-url="http://qingboshare.com/2016/04/17/How-to-create-private-pod/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/17/How-to-create-private-pod/"
+           data-title="如何创建一个私有pod库" data-url="http://qingboshare.com/2016/04/17/How-to-create-private-pod/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favicon.png"
+               alt="Jackson" />
+          <p class="site-author-name" itemprop="name">Jackson</p>
+          <p class="site-description motion-element" itemprop="description">个人博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Jackson-Jack" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建私有Spec-Repo"><span class="nav-number">1.1.</span> <span class="nav-text">创建私有Spec Repo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Pod项目工程文件"><span class="nav-number">1.2.</span> <span class="nav-text">创建Pod项目工程文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建podspec文件"><span class="nav-number">1.3.</span> <span class="nav-text">创建podspec文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向Spec-Repo提交podspec"><span class="nav-number">1.4.</span> <span class="nav-text">向Spec Repo提交podspec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用制作好的Pod"><span class="nav-number">1.5.</span> <span class="nav-text">使用制作好的Pod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新podspec文件"><span class="nav-number">1.6.</span> <span class="nav-text">更新podspec文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackson</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+
+<div class="translate-style">
+  繁/简：<a id="translateLink" href="javascript:translatePage();">繁體
+  </a>
+</div>
+
+<script type="text/javascript" src="http://www.qingboshare.com/js/src/tw_cn.js"></script>
+<script type="text/javascript">
+var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+var cookieDomain = "http://www.qingboshare.com/"; //Cookie地址, 一定要设定, 通常为你的网址
+var msgToTraditionalChinese = "繁體"; //此处可以更改为你想要显示的文字
+var msgToSimplifiedChinese = "简体"; //同上，但两处均不建议更改
+var translateButtonId = "translateLink"; //默认互换id
+translateInitilization();
+</script>
+
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"qingboshare"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("pIQtM6SEA14KA8faJC1wmGxF-gzGzoHsz", "25DWxe2gh6l00jg6ArRwdovQ");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
