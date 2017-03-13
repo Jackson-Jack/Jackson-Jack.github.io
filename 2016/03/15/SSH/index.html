@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://qingboshare.com/2016/03/15/SSH/index.html">
 <meta property="og:site_name" content="技术分享云">
 <meta property="og:description" content="一、SSH登陆的原理1. 什么是SSHSSH（安全外壳协议）为 Secure Shell 的缩写，一种网络协议，用于计算机之间的加密通信。">
-<meta property="og:updated_time" content="2017-03-13T14:03:43.000Z">
+<meta property="og:updated_time" content="2017-03-13T14:53:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSH 相关知识">
 <meta name="twitter:description" content="一、SSH登陆的原理1. 什么是SSHSSH（安全外壳协议）为 Secure Shell 的缩写，一种网络协议，用于计算机之间的加密通信。">
@@ -362,16 +362,21 @@
 <h2 id="二、如何生成SSH-key"><a href="#二、如何生成SSH-key" class="headerlink" title="二、如何生成SSH key"></a>二、如何生成SSH key</h2><ol>
 <li>在生成SSH key之前，避免可能把之前的key覆盖掉，首先可以检查以前的key是否存在，有则可以跳过第二步。（如何查看？直接在终端输入“ls ~/.ssh”查看里面是否有id_rsa和id_rsa.pub 文件）</li>
 <li><p>生成SSH key很容易，只需要提供一个邮箱账号即可，切换到~/.ssh文件目录下，在终端输入：</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C <span class="string">"your_email@example.com"</span></div></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C <span class="string">"your_email@example.com"</span></div></pre></td></tr></table></figure>
 </li>
 </ol>
 <ol>
 <li><p>将生成的id_rsa.pub文件内容复制到相应的网站里（比如公司服务器，Github，Coding等），提供一个很方便的拷贝语句</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pbcopy &lt; ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pbcopy &lt; ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="三、扩展阅读"><a href="#三、扩展阅读" class="headerlink" title="三、扩展阅读"></a>三、扩展阅读</h2><ul>
+<p>然后我们就需要测试一下SSH连接</p>
+<pre><code><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>ssh -T git<span class="variable">@github</span>.com</div></pre></td></tr></table></figure>
+</code></pre><p>  如果展示下诉信息，则说明SSH连接成功</p>
+<pre><code><figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Hi username! You<span class="symbol">'ve</span> successfully authenticated, but GitHub does <span class="keyword">not</span></div><div class="line">provide shell <span class="keyword">access</span>.</div></pre></td></tr></table></figure>
+</code></pre><h2 id="三、扩展阅读"><a href="#三、扩展阅读" class="headerlink" title="三、扩展阅读"></a>三、扩展阅读</h2><ul>
 <li><a href="http://www.jianshu.com/p/31cbbbc5f9fa/" target="_blank" rel="external">如何生成SSH key</a></li>
+<li><a href="https://help.github.com/articles/connecting-to-github-with-ssh/" target="_blank" rel="external">Connecting to GitHub with SSH</a></li>
 </ul>
 
       
