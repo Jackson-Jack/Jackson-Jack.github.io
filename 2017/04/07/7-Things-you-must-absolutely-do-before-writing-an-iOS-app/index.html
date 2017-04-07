@@ -1,0 +1,1118 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="转自CocoaChina翻译活动
+英文原文：7 Things you must absolutely do before writing an iOS app
+
+
+这两年，我一直在编写并发布有质量的iOS 应用。我发现大多数的开发人员有直接跳进编码应用程序的核心逻辑的倾向，因为这是乐趣所在。遵循流程开发是很无聊的。
+我了解到最有效的方式是，如果你提前花些时间正确设置项目，你将会为将来节省大量的时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在写一个iOS应用之前必须做的7件事">
+<meta property="og:url" content="http://qingboshare.com/2017/04/07/7-Things-you-must-absolutely-do-before-writing-an-iOS-app/index.html">
+<meta property="og:site_name" content="技术分享云">
+<meta property="og:description" content="转自CocoaChina翻译活动
+英文原文：7 Things you must absolutely do before writing an iOS app
+
+
+这两年，我一直在编写并发布有质量的iOS 应用。我发现大多数的开发人员有直接跳进编码应用程序的核心逻辑的倾向，因为这是乐趣所在。遵循流程开发是很无聊的。
+我了解到最有效的方式是，如果你提前花些时间正确设置项目，你将会为将来节省大量的时">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwly1feef80akyij30h6043jrg.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcly1feefb0v3cqj30h5044748.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1feefbi1n0pj30gf03o0sn.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcly1feefcigko3j30h80443yh.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcly1feefcys1zpj30h9048wei.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcly1feefde6wnrj30gw03kq2x.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcly1feefdxmlgsj30hn03q745.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcly1feefenatvij30hf03odfr.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1feefg7eqkrj30h6043747.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcly1feefgy9espj30hj038wec.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcly1feefhfktlij30hj044jre.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1feefhsz0fwj30h5043gll.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcly1feefifeabjj30h6045q2y.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcly1feefiq4g4tj30hd0463yh.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcly1feefjxqbalj30h503qa9v.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcly1feefk6t2t6j30h4043t8m.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcly1feefkgwicsj30h404b748.jpg">
+<meta property="og:updated_time" content="2017-04-07T14:05:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在写一个iOS应用之前必须做的7件事">
+<meta name="twitter:description" content="转自CocoaChina翻译活动
+英文原文：7 Things you must absolutely do before writing an iOS app
+
+
+这两年，我一直在编写并发布有质量的iOS 应用。我发现大多数的开发人员有直接跳进编码应用程序的核心逻辑的倾向，因为这是乐趣所在。遵循流程开发是很无聊的。
+我了解到最有效的方式是，如果你提前花些时间正确设置项目，你将会为将来节省大量的时">
+<meta name="twitter:image" content="https://ww2.sinaimg.cn/large/006tNbRwly1feef80akyij30h6043jrg.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 137485344,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> 在写一个iOS应用之前必须做的7件事 | 技术分享云 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', '90530775-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?33e630acf8f8611c5a6d2f4ca7a566e4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1261213791&web_id=1261213791" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">技术分享云</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="#" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                在写一个iOS应用之前必须做的7件事
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-07T21:51:37+08:00" content="2017-04-07">
+              2017-04-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/04/07/7-Things-you-must-absolutely-do-before-writing-an-iOS-app/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/07/7-Things-you-must-absolutely-do-before-writing-an-iOS-app/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/04/07/7-Things-you-must-absolutely-do-before-writing-an-iOS-app/" class="leancloud_visitors" data-flag-title="在写一个iOS应用之前必须做的7件事">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>转自<a href="http://www.cocoachina.com/special/translation/" target="_blank" rel="external">CocoaChina翻译活动</a></li>
+<li>英文原文：<a href="https://medium.com/ios-os-x-development/7-things-you-must-absolutely-do-before-writing-an-ios-app-a8bacf710c57" target="_blank" rel="external">7 Things you must absolutely do before writing an iOS app</a></li>
+</ul>
+<blockquote>
+<p>这两年，我一直在编写并发布有质量的iOS 应用。我发现大多数的开发人员有直接跳进编码应用程序的核心逻辑的倾向，因为这是乐趣所在。遵循流程开发是很无聊的。</p>
+<p>我了解到最有效的方式是，如果你提前花些时间正确设置项目，你将会为将来节省大量的时间。如果你是一位独立开发者，你可能意识不到下面提到的这些步骤的重要性。大多数优秀的应用程序都由团队开发，如果遵循以下步骤，肯定能帮你减少挫败感并提升应用质量。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="1-为工程设置编码风格规范"><a href="#1-为工程设置编码风格规范" class="headerlink" title="1.为工程设置编码风格规范"></a>1.为工程设置编码风格规范</h3><p>编码风格规范指的是在使用特定语言写代码之前要明确遵守的风格和惯例，它包括类似于该使用tab键还是空格键，如何命名变量以及特定语言本身的约定俗成（像swift语言中是否该使用Classes还是Structs）。</p>
+<p>编码规范本身没有孰对孰错。在项目开始前，你可以设置自己的编码风格，但是必须保证同组的人遵守相同的规范。编码规范能够保证代码更加统一和更易于阅读。</p>
+<p>一些公司已经开源了Objective-C和Swift语言的编码规范。</p>
+<ul>
+<li><p><a href="https://github.com/raywenderlich/swift-style-guide" target="_blank" rel="external">Ray Wenderlich/Swift Style Guide</a><br><img src="https://ww2.sinaimg.cn/large/006tNbRwly1feef80akyij30h6043jrg.jpg" alt=""></p>
+</li>
+<li><p><a href="https://github.com/github/swift-style-guide" target="_blank" rel="external">GitHub/swift-style-guide</a><br><img src="https://ww2.sinaimg.cn/large/006tKfTcly1feefb0v3cqj30h5044748.jpg" alt=""></p>
+</li>
+<li><p><a href="https://github.com/NYTimes/objective-c-style-guide" target="_blank" rel="external">NYTimes/objective-c-style-guide</a><br><img src="https://ww4.sinaimg.cn/large/006tKfTcly1feefbi1n0pj30gf03o0sn.jpg" alt=""></p>
+</li>
+</ul>
+<h3 id="2-在写代码之前确定应用的架构"><a href="#2-在写代码之前确定应用的架构" class="headerlink" title="2.在写代码之前确定应用的架构"></a>2.在写代码之前确定应用的架构</h3><p>在写代码之前，确定应用架构是非常重要的。一个好的架构可以提升应用的可测试性，更加易于理解并且能降低维护成本。你可以使用传统的MVC架构，或者使用更加流行的MVVM或VIPER架构，这里提供了大量的资源来介绍这些架构。</p>
+<ul>
+<li><p><a href="https://medium.com/ios-os-x-development/ios-architecture-patterns-ecba4c38de52#.p84b7rwty" target="_blank" rel="external">iOS Architecture Patterns（中文版：iOS 架构模式–解密 MVC，MVP，MVVM以及VIPER架构）</a><br><img src="https://ww2.sinaimg.cn/large/006tKfTcly1feefcigko3j30h80443yh.jpg" alt=""></p>
+</li>
+<li><p><a href="https://www.objc.io/issues/13-architecture/" target="_blank" rel="external">Issue 13 Architecture *objc.io</a><br><img src="https://ww2.sinaimg.cn/large/006tKfTcly1feefcys1zpj30h9048wei.jpg" alt=""></p>
+</li>
+<li><p><a href="https://slack-files.com/T051G5Y6D-F0HABHKDK-8e9141e191" target="_blank" rel="external">Modern application architectures (Reactive programming, MVVM and beyond)</a><br><img src="https://ww2.sinaimg.cn/large/006tKfTcly1feefde6wnrj30gw03kq2x.jpg" alt=""></p>
+</li>
+</ul>
+<h3 id="3-设定应用的目录结构"><a href="#3-设定应用的目录结构" class="headerlink" title="3.设定应用的目录结构"></a>3.设定应用的目录结构</h3><p>为了使数以百计的源代码文件至始至终保存在相同的目录中，最好是根据项目的架构制定目录结构，例如，你可以使用以下的目录结构：</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tKfTcly1feefdxmlgsj30hn03q745.jpg" alt=""></p>
+<p>首先，在Xcode的Project Navigator中工程名称分组下面，以group的形式创建它们（小黄色的文件夹），然后，通过打开Xcode右边的File Inspector，为每个创建的group链接到真实的项目路径下对应的目录，点击File Inspector中小的灰色的文件夹icon，在工程目录下创建对应group名称的子目录。</p>
+<p>这个看起来是件小的事情，却可以使你的项目更加有条理且易于理解。</p>
+<p>了解更多目录结构可以参考以下资源：</p>
+<ul>
+<li><a href="https://github.com/futurice/ios-good-practices" target="_blank" rel="external">futurice/ios-good-practices</a><br><img src="https://ww2.sinaimg.cn/large/006tKfTcly1feefenatvij30hf03odfr.jpg" alt=""></li>
+</ul>
+<h3 id="4-项目依赖管理"><a href="#4-项目依赖管理" class="headerlink" title="4.项目依赖管理"></a>4.项目依赖管理</h3><p>你当然会在项目中使用第三方库，在项目中，你可以有三种方式可以管理项目依赖。</p>
+<ul>
+<li><a href="https://cocoapods.org" target="_blank" rel="external">CocoaPods</a><br>CocoaPods是适用于Swift和Objective-C Cocoa项目的依赖管理库，它有将近10000个开源库，可以优雅地帮你管理项目的规模。它是最有效的方式做依赖管理，就像Ruby中的Gems。</li>
+</ul>
+<p>Youtube上有一个google开发者创建的滑稽的视频（地址，需翻墙）来解释为什么必须在项目中使用CocoaPods。</p>
+<ul>
+<li>Github Submodules<br>你也可以使用Github Submodules管理你的项目依赖作为子库，相比CocoaPods，Github Submodules的优点在于它是sub-repos- 这不仅意味着git和git GUIs能够隐式识别他们，并且也可以获得更多支持，同时意味着你的工程依赖能够更加紧密的联系到他们的git仓库，而Cocoapods则不能。</li>
+</ul>
+<p>submodules的问题是：你的工程不拥有你依赖库的源代码，仅仅是拥有一个引用到submodule的仓库。大多数情况你控制不了这些代码仓库。</p>
+<ul>
+<li><a href="https://github.com/Carthage/Carthage" target="_blank" rel="external">Carthage</a><br><img src="https://ww4.sinaimg.cn/large/006tKfTcly1feefg7eqkrj30h6043747.jpg" alt=""></li>
+</ul>
+<p>Carthage被认为是往Cocoa应用中添加框架的最简单的方法。Carthage使用xcodebuild编译framework二进制，但是把集成的任务留给了用户。CocoaPods的目的是对用户简单，但是Carthage对用户来说是灵活的、不干涉的。</p>
+<p>不幸的是，Carthage的最大的缺点是—-只支持iOS8及以后版本。</p>
+<p>这三个当中，我最常用并且我个人最喜欢的是CocoaPods，因为它设置超级简单，并且提供了数以千计的第三方库供你访问。</p>
+<h3 id="5-为应用设置合适的Scheme"><a href="#5-为应用设置合适的Scheme" class="headerlink" title="5.为应用设置合适的Scheme"></a>5.为应用设置合适的Scheme</h3><p>当你点击了Run、Test、Profile、Analyze或者Archive 操作后，Schemes告诉Xcode什么会发生。通常，每个操作对应一个target和一个编译配置。你也可以传递启动参数，比如应用运行的语言(测试本地化很有用)或者debug时设置一些判断的标识位。</p>
+<p>建议Scheme的命名规则采用MyApp () [Environment]:</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tKfTcly1feefgy9espj30hj038wec.jpg" alt=""></p>
+<p>你也可以使用Target制作不同的发布、测试以及开发来编译程序，如以下描述：</p>
+<ul>
+<li><a href="https://www.appcoda.com/using-xcode-targets/" target="_blank" rel="external">How to Use Xcode Targets to Manage Development and Production Builds</a><br><img src="https://ww1.sinaimg.cn/large/006tKfTcly1feefhfktlij30hj044jre.jpg" alt=""></li>
+</ul>
+<h3 id="6-设置合适的Certificates和Provisioning-Profiles"><a href="#6-设置合适的Certificates和Provisioning-Profiles" class="headerlink" title="6.设置合适的Certificates和Provisioning Profiles"></a>6.设置合适的Certificates和Provisioning Profiles</h3><p>在测试和发布应用过程中，这个是开发者最头疼且重要的步骤。证书对代码签名来说是必须的，你可以在真机上运行应用程序。</p>
+<p>有两种类型的证书：</p>
+<ul>
+<li>开发证书：每个团队的开发者都有自己的证书，需要请求生成。Xcode会为你做这些，但是最好不要点击“Fix issue”按钮，并且能够理解点击这个按钮会真正执行什么。开发证书是发布应用的开发版本到设备上。</li>
+<li>发布证书：可以有多个，但是最好保持一个公司一个发布证书，通过内部渠道分享相关的秘钥。发布应用到App Store时需要这个证书，或者是公司内部的企业级应用分发。</li>
+</ul>
+<blockquote>
+<p>Provisioning Profiles 可能是系统中最容易引起混淆的部分了，如果你访问苹果开发者网站，你会注意到你可以创建两种类型的Provisioning Profiles（开发和发布）。Provisioning Profiles是“以这个证书的私钥作为签名的应用可以在这些设备上正常运行: <a href="https://www.quora.com/What-are-the-differences-between-certificates-provisioning-profiles-and-identifiers" target="_blank" rel="external">https://www.quora.com/What-are-the-differences-between-certificates-provisioning-profiles-and-identifiers</a></p>
+</blockquote>
+<p>你可以阅读更多相关资源:</p>
+<ul>
+<li><p><a href="https://developer.apple.com/library/content/documentation/IDEs/Conceptual/AppDistributionGuide/MaintainingCertificates/MaintainingCertificates.html" target="_blank" rel="external">Maintaining Your Signing Identities and Certificates</a><br><img src="https://ww4.sinaimg.cn/large/006tKfTcly1feefhsz0fwj30h5043gll.jpg" alt=""></p>
+</li>
+<li><p><a href="https://possiblemobile.com/2013/04/what-is-a-provisioning-profile-part-2/" target="_blank" rel="external">What is a Provisioning Profile? Part 2</a><br><img src="https://ww1.sinaimg.cn/large/006tKfTcly1feefifeabjj30h6045q2y.jpg" alt=""></p>
+</li>
+</ul>
+<h3 id="7-设置应用持续集成和交付过程"><a href="#7-设置应用持续集成和交付过程" class="headerlink" title="7.设置应用持续集成和交付过程"></a>7.设置应用持续集成和交付过程</h3><p>建立一个持续集成和交付过程已成为关键，因为现在它可以帮助您在开发早期发现bug和节省大量的开发人员的时间。</p>
+<p>持续集成 (CI) 是一种开发实践，要求开发人员一天将代码同步到共享存储库几次。每次提交都会用自动脚本进行验证，可以使团队尽早的发现问题。</p>
+<p>很多工具可以帮你做iOS应用程序的持续集成，比如 Xcode Server、Jenkins和Travis CI。</p>
+<ul>
+<li><p><a href="https://developer.apple.com/library/content/documentation/IDEs/Conceptual/xcode_guide-continuous_integration/" target="_blank" rel="external">About Continuous Integration in Xcode</a><br><img src="https://ww2.sinaimg.cn/large/006tKfTcly1feefiq4g4tj30hd0463yh.jpg" alt=""></p>
+</li>
+<li><p><a href="https://travis-ci.org" target="_blank" rel="external">Travis-CI:Test and Deploy with Confidence</a><br><img src="https://ww1.sinaimg.cn/large/006tKfTcly1feefjxqbalj30h503qa9v.jpg" alt=""></p>
+</li>
+<li><p><a href="https://blog.pivotal.io/labs/labs/ios-ci-jenkins" target="_blank" rel="external">iOS CI with Jenkins</a><br><img src="https://ww3.sinaimg.cn/large/006tKfTcly1feefk6t2t6j30h4043t8m.jpg" alt=""></p>
+</li>
+</ul>
+<p>持续交付 (CD) 是一个<a href="https://en.wikipedia.org/wiki/Software_engineering" target="_blank" rel="external">软件工程</a>的方式，可以使团队在短周期内开发软件，确保软件可以在任何时间可靠地发布。它旨在更快、更频繁地构建、测试和发布的软件。</p>
+<p>为什么使用持续交付？</p>
+<ul>
+<li>可以在准备应用提交、上传截图以及发布应用上节省数天时间。</li>
+<li>如果在同事休假期间，但你发现一个严重问题需要修复并发布怎么办？在发布更新版本时不需要依赖某一个人。</li>
+<li>通过更频繁和小版本的更新，提高软件质量和反应时间。</li>
+</ul>
+<p>虽然有大量的工具供持续交付，我个人最喜欢的是Fastlane。它非常容易安装，并提供了一些强大的功能，可以使你整个的编译和发布过程自动化。</p>
+<ul>
+<li><a href="https://fastlane.tools" target="_blank" rel="external">Fastlane</a><br><img src="https://ww1.sinaimg.cn/large/006tKfTcly1feefkgwicsj30h404b748.jpg" alt=""></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block； padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jackson wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的博客！</div>
+</div>
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>如果你觉得我的文章还不错，欢迎打赏～</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward-image.png" alt="Jackson WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward-image.png" alt="Jackson Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/16/how-to-download-online-video-with-mac/" rel="next" title="Mac 在线视频下载">
+                <i class="fa fa-chevron-left"></i> Mac 在线视频下载
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/04/07/7-Things-you-must-absolutely-do-before-writing-an-iOS-app/"
+     data-title="在写一个iOS应用之前必须做的7件事"
+     data-content=""
+     data-url="http://qingboshare.com/2017/04/07/7-Things-you-must-absolutely-do-before-writing-an-iOS-app/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/04/07/7-Things-you-must-absolutely-do-before-writing-an-iOS-app/"
+           data-title="在写一个iOS应用之前必须做的7件事" data-url="http://qingboshare.com/2017/04/07/7-Things-you-must-absolutely-do-before-writing-an-iOS-app/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/favicon.png"
+               alt="Jackson" />
+          <p class="site-author-name" itemprop="name">Jackson</p>
+          <p class="site-description motion-element" itemprop="description">个人博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Jackson-Jack" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-为工程设置编码风格规范"><span class="nav-number">1.</span> <span class="nav-text">1.为工程设置编码风格规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-在写代码之前确定应用的架构"><span class="nav-number">2.</span> <span class="nav-text">2.在写代码之前确定应用的架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-设定应用的目录结构"><span class="nav-number">3.</span> <span class="nav-text">3.设定应用的目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-项目依赖管理"><span class="nav-number">4.</span> <span class="nav-text">4.项目依赖管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-为应用设置合适的Scheme"><span class="nav-number">5.</span> <span class="nav-text">5.为应用设置合适的Scheme</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-设置合适的Certificates和Provisioning-Profiles"><span class="nav-number">6.</span> <span class="nav-text">6.设置合适的Certificates和Provisioning Profiles</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-设置应用持续集成和交付过程"><span class="nav-number">7.</span> <span class="nav-text">7.设置应用持续集成和交付过程</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackson</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+
+<div class="translate-style">
+  繁/简：<a id="translateLink" href="javascript:translatePage();">繁體
+  </a>
+</div>
+
+<script type="text/javascript" src="http://www.qingboshare.com/js/src/tw_cn.js"></script>
+<script type="text/javascript">
+var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+var cookieDomain = "http://www.qingboshare.com/"; //Cookie地址, 一定要设定, 通常为你的网址
+var msgToTraditionalChinese = "繁體"; //此处可以更改为你想要显示的文字
+var msgToSimplifiedChinese = "简体"; //同上，但两处均不建议更改
+var translateButtonId = "translateLink"; //默认互换id
+translateInitilization();
+</script>
+
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"qingboshare"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';                
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+                            
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').mousedown(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("pIQtM6SEA14KA8faJC1wmGxF-gzGzoHsz", "25DWxe2gh6l00jg6ArRwdovQ");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
