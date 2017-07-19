@@ -87,8 +87,8 @@
 <meta name="description" content="从事iOS开发也有好些年了，从最初的不懂得如何调试程序，到后来慢慢学会了用NSLog来调试，再到如今掌握了一些调试技巧，明显感觉到开发效率在提升。现在我就谈一谈Xcode的调试技巧，关于调试技巧，也就是如何使用断点来调试，为了让大家对断点有进一步的认识，我就把断点分为了下面几个类别：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Xcode 调试技巧">
-<meta property="og:url" content="http://qingboshare.com/2016/08/17/xcode-debugging/index.html">
-<meta property="og:site_name" content="技术分享云">
+<meta property="og:url" content="http://qingbo.site/2016/08/17/xcode-debugging/index.html">
+<meta property="og:site_name" content="青波志">
 <meta property="og:description" content="从事iOS开发也有好些年了，从最初的不懂得如何调试程序，到后来慢慢学会了用NSLog来调试，再到如今掌握了一些调试技巧，明显感觉到开发效率在提升。现在我就谈一谈Xcode的调试技巧，关于调试技巧，也就是如何使用断点来调试，为了让大家对断点有进一步的认识，我就把断点分为了下面几个类别：">
 <meta property="og:image" content="http://7xrmkz.com1.z0.glb.clouddn.com/2016-08-18_Screen%20Shot%202016-08-18%20at%2000.05.22.png-autofit">
 <meta property="og:image" content="http://7xrmkz.com1.z0.glb.clouddn.com/2016-08-18_Screen%20Shot%202016-08-18%20at%2000.09.17.png-autofit">
@@ -117,13 +117,13 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 137485344,
-      author: 'Author'
+      userId: undefined,
+      author: '博主'
     }
   };
 </script>
 
-  <title> Xcode 调试技巧 | 技术分享云 </title>
+  <title> Xcode 调试技巧 | 青波志 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,7 +136,7 @@
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', '90530775-1', 'auto');
+  ga('create', '02833390-1', 'auto');
   ga('send', 'pageview');
 </script>
 
@@ -145,7 +145,7 @@
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?33e630acf8f8611c5a6d2f4ca7a566e4";
+      hm.src = "//hm.baidu.com/hm.js?f97fadf38c7eba3ba2b7237d199db846";
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
@@ -179,7 +179,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">技术分享云</span>
+      <span class="site-title">青波志</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -354,7 +354,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/2016/08/17/xcode-debugging/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/17/xcode-debugging/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/08/17/xcode-debugging/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -515,24 +515,11 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/08/17/xcode-debugging/"
-     data-title="Xcode 调试技巧"
-     data-content=""
-     data-url="http://qingboshare.com/2016/08/17/xcode-debugging/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
 
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
       
     </div>
   </div>
@@ -541,15 +528,15 @@
           </div>
           
 
-  <p>热评文章</p>
-  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
-
 
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/08/17/xcode-debugging/"
-           data-title="Xcode 调试技巧" data-url="http://qingboshare.com/2016/08/17/xcode-debugging/">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
       </div>
     
   </div>
@@ -787,28 +774,30 @@ translateInitilization();
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"qingboshare"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
 
 
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'JacksonDai';
+      var disqus_identifier = '2016/08/17/xcode-debugging/';
+      var disqus_title = 'Xcode 调试技巧';
+      var disqus_url = 'http://qingbo.site/2016/08/17/xcode-debugging/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
 
 
 
@@ -949,7 +938,7 @@ translateInitilization();
 
   
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("pIQtM6SEA14KA8faJC1wmGxF-gzGzoHsz", "25DWxe2gh6l00jg6ArRwdovQ");</script>
+  <script>AV.initialize("uv3aP7w7bjygSePKi9J3lPax-gzGzoHsz", "hXyPPCw0ADr6UPJanzQxPtYk");</script>
   <script>
     function showTime(Counter) {
       var query = new AV.Query(Counter);

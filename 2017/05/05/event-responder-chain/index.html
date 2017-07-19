@@ -87,8 +87,8 @@
 <meta name="description" content="我记得我刚接触触屏设备是在03、04年的时候，那个时候为了学习英语，就花了几百大洋去买了一个英语学习通，那个时候的几百大洋可比现在值钱多了。那个时候的屏幕都是电阻屏的，你点击屏幕就会发现屏幕被你“按”了一下，可以很明显的从视觉角度看到手指的力度。这个事件传递“看”起来就比较直观（可能原理也比较复杂）。如今的苹果触屏设备都是电容屏，可以支持多点触控，极大的丰富了我们十指姑娘。好吧，废话不多说了，针对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="事件传递响应链">
-<meta property="og:url" content="http://qingboshare.com/2017/05/05/event-responder-chain/index.html">
-<meta property="og:site_name" content="技术分享云">
+<meta property="og:url" content="http://qingbo.site/2017/05/05/event-responder-chain/index.html">
+<meta property="og:site_name" content="青波志">
 <meta property="og:description" content="我记得我刚接触触屏设备是在03、04年的时候，那个时候为了学习英语，就花了几百大洋去买了一个英语学习通，那个时候的几百大洋可比现在值钱多了。那个时候的屏幕都是电阻屏的，你点击屏幕就会发现屏幕被你“按”了一下，可以很明显的从视觉角度看到手指的力度。这个事件传递“看”起来就比较直观（可能原理也比较复杂）。如今的苹果触屏设备都是电容屏，可以支持多点触控，极大的丰富了我们十指姑娘。好吧，废话不多说了，针对">
 <meta property="og:updated_time" content="2017-06-22T15:56:22.000Z">
 <meta name="twitter:card" content="summary">
@@ -105,13 +105,13 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 137485344,
-      author: 'Author'
+      userId: undefined,
+      author: '博主'
     }
   };
 </script>
 
-  <title> 事件传递响应链 | 技术分享云 </title>
+  <title> 事件传递响应链 | 青波志 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -124,7 +124,7 @@
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', '90530775-1', 'auto');
+  ga('create', '02833390-1', 'auto');
   ga('send', 'pageview');
 </script>
 
@@ -133,7 +133,7 @@
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?33e630acf8f8611c5a6d2f4ca7a566e4";
+      hm.src = "//hm.baidu.com/hm.js?f97fadf38c7eba3ba2b7237d199db846";
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
@@ -167,7 +167,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">技术分享云</span>
+      <span class="site-title">青波志</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -342,7 +342,7 @@
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
                 <a href="/2017/05/05/event-responder-chain/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/05/event-responder-chain/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/05/05/event-responder-chain/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -492,24 +492,11 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/05/05/event-responder-chain/"
-     data-title="事件传递响应链"
-     data-content=""
-     data-url="http://qingboshare.com/2017/05/05/event-responder-chain/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
 
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
       
     </div>
   </div>
@@ -518,15 +505,15 @@
           </div>
           
 
-  <p>热评文章</p>
-  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
-
 
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/05/05/event-responder-chain/"
-           data-title="事件传递响应链" data-url="http://qingboshare.com/2017/05/05/event-responder-chain/">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
       </div>
     
   </div>
@@ -764,28 +751,30 @@ translateInitilization();
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"qingboshare"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
 
 
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'JacksonDai';
+      var disqus_identifier = '2017/05/05/event-responder-chain/';
+      var disqus_title = '事件传递响应链';
+      var disqus_url = 'http://qingbo.site/2017/05/05/event-responder-chain/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
 
 
 
@@ -926,7 +915,7 @@ translateInitilization();
 
   
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("pIQtM6SEA14KA8faJC1wmGxF-gzGzoHsz", "25DWxe2gh6l00jg6ArRwdovQ");</script>
+  <script>AV.initialize("uv3aP7w7bjygSePKi9J3lPax-gzGzoHsz", "hXyPPCw0ADr6UPJanzQxPtYk");</script>
   <script>
     function showTime(Counter) {
       var query = new AV.Query(Counter);
