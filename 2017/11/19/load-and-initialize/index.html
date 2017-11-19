@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="qingbo, blog, iOS, article, summary" />
+  <meta name="keywords" content="load,initialize," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="工作了五年的工程师，算不算高级开发者？归类开发者不是简单地看工作年限，因为经验这种东西千金难换但又一文不值。">
+<meta name="description" content="iOS开发中总能看到+load和+initialize的身影,网上对于这两个方法有很多解释,官方也有说明,但有些细节不够清楚,今天我们来详细扒一扒这两个方法.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【转】一个大神开发者的使命感究竟应该是什么">
-<meta property="og:url" content="http://qingbo.site/2016/03/08/The-Role-of-a-Senior-Developer/index.html">
+<meta property="og:title" content="NSObject的load和initialize方法">
+<meta property="og:url" content="http://qingbo.site/2017/11/19/load-and-initialize/index.html">
 <meta property="og:site_name" content="青波志">
-<meta property="og:description" content="工作了五年的工程师，算不算高级开发者？归类开发者不是简单地看工作年限，因为经验这种东西千金难换但又一文不值。">
-<meta property="og:updated_time" content="2016-12-05T14:43:02.000Z">
+<meta property="og:description" content="iOS开发中总能看到+load和+initialize的身影,网上对于这两个方法有很多解释,官方也有说明,但有些细节不够清楚,今天我们来详细扒一扒这两个方法.">
+<meta property="og:updated_time" content="2017-11-19T10:23:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【转】一个大神开发者的使命感究竟应该是什么">
-<meta name="twitter:description" content="工作了五年的工程师，算不算高级开发者？归类开发者不是简单地看工作年限，因为经验这种东西千金难换但又一文不值。">
+<meta name="twitter:title" content="NSObject的load和initialize方法">
+<meta name="twitter:description" content="iOS开发中总能看到+load和+initialize的身影,网上对于这两个方法有很多解释,官方也有说明,但有些细节不够清楚,今天我们来详细扒一扒这两个方法.">
 
 
 
@@ -111,7 +111,7 @@
   };
 </script>
 
-  <title> 【转】一个大神开发者的使命感究竟应该是什么 | 青波志 </title>
+  <title> NSObject的load和initialize方法 | 青波志 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -299,7 +299,7 @@
             
             
               
-                【转】一个大神开发者的使命感究竟应该是什么
+                NSObject的load和initialize方法
               
             
           </h1>
@@ -311,8 +311,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-08T00:00:00+08:00" content="2016-03-08">
-              2016-03-08
+            <time itemprop="dateCreated" datetime="2017-11-19T17:43:36+08:00" content="2017-11-19">
+              2017-11-19
             </time>
           </span>
 
@@ -325,8 +325,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/程序人生/" itemprop="url" rel="index">
-                    <span itemprop="name">程序人生</span>
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
                   </a>
                 </span>
 
@@ -341,8 +341,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/08/The-Role-of-a-Senior-Developer/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/03/08/The-Role-of-a-Senior-Developer/" itemprop="commentsCount"></span>
+                <a href="/2017/11/19/load-and-initialize/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/11/19/load-and-initialize/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -352,7 +352,7 @@
 
           
           
-             <span id="/2016/03/08/The-Role-of-a-Senior-Developer/" class="leancloud_visitors" data-flag-title="【转】一个大神开发者的使命感究竟应该是什么">
+             <span id="/2017/11/19/load-and-initialize/" class="leancloud_visitors" data-flag-title="NSObject的load和initialize方法">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -374,41 +374,45 @@
       
 
       
-        <blockquote>
-<p>工作了五年的工程师，算不算高级开发者？归类开发者不是简单地看工作年限，因为经验这种东西千金难换但又一文不值。</p>
-</blockquote>
+        <p>iOS开发中总能看到+load和+initialize的身影,网上对于这两个方法有很多解释,官方也有说明,但有些细节不够清楚,今天我们来详细扒一扒这两个方法.</p>
 <a id="more"></a>
-<p>我们现在工作的行业很奇怪。明明每年都有新的从业人员涌入人才市场，但企业依旧诉苦自己迫切需要大量的开发。这种问题存在已久，而且已经越发严峻。</p>
-<p>开发者这个行业非常年轻，也面临着很严重的人才短缺问题。大部分的软件开发项目无疾而终，原因是后期开支过于庞大。那些行业里的大佬是怎么建议我们的，他们说「世界上永远存在解决问题的办法，但我们还是会遇到各种难题。因为除非我们真正去尝试解决，否则永远不知道哪种方法奏效。」</p>
-<p>认识一个现实吧，当你从事开发工作三年以上，就可以称呼自己为「高级开发者」。但实际上，有些人只是在这个位置上混三年，而他们只是虚有其表，水平严重不符合职位。</p>
-<p>这确实是我对同行的评语。</p>
-<p>首先，根据知识和经验把人分为初级开发者、中级开发者，和高级开发者，这是非常一刀切地分类。有些人可能只是在一个位置上混了十年，然而他的成长甚至没有另一个人一年所学到和经验多。</p>
-<h2 id="开发者的高速成长期："><a href="#开发者的高速成长期：" class="headerlink" title="开发者的高速成长期："></a>开发者的高速成长期：</h2><p>身为一个程序员，我们生活在一个 IT 系统越发复杂且多变化的时代。有时候执行一个简单的开源项目，都需要精准定义并耗费大量时间专注任务。尤其是当你身为一个新晋程序员，或者对手下的数据库还很陌生的时候。</p>
-<p>菜鸟程序员很难当。你可能刚从一个还不错的大学毕业，你觉得你已经掌握了基本的常识。但突然间，你在工作上面临的是另一套崭新的知识。在很长时间内，你都对自己所要做的工作没有任何头绪。而对于上司提出的要求，你似乎只能妥协，而且没办法作出有效质疑。</p>
-<p>在这个阶段，你必须要做的是专注。而且尽可能地放开心胸，去努力学习。初级开发者在工作之初，需要大量的练习，指导、监管，以及需要一个能帮助他们的老师。缺乏以上的任何条件，初级开发者都很难很难迈过这个初学者门槛。</p>
-<p>我最近遇到一个家伙，他已经有十年的软件构造经验，但是我很遗憾地发现，他的真实水平依旧只是初级开发者。你可以说这个阶段，是战略上的积累状态，但就是要学习加积累，积累再学习，缺一不可。</p>
-<p>初级开发者必须要专注代码本身，在这个阶段，不要分心想任何其他乱七八糟的事情。在开发一个项目时，如果身为程序员想的是「我想让自己的代码在别人眼里看起来漂漂亮亮的」，而不是「我做的东西应该以用户感受第一」，那么他本身就是一个初级开发。</p>
-<p>一个好的开发者可以出色地完成任务，而且不仅如此，他们能以较短时间出色完成任何，后期也会维护好。</p>
-<h2 id="中级开发者的瓶颈期间"><a href="#中级开发者的瓶颈期间" class="headerlink" title="中级开发者的瓶颈期间"></a>中级开发者的瓶颈期间</h2><p>当一个开发者脱离菜鸟阶段成长为中级开发者时，他们能够在项目失败时反省整个过程（通常，他们会看自己所做工作部分）。而且会意识到，比起匆匆忙忙埋头苦干完成任务，应该在项目最初就建立起一些规矩。甚至于如果最开始有人指正他们，整个项目就能在最初避免走向失败。</p>
-<p>而中级开发者还会体验另一个独特心理过程，那就是当他们回首一年前的工作。发现尽管当时认为「哎呦，自己做的还不错」，但现在会发现「这都什么玩意」啊。</p>
-<p>一个中级开发者是有能力通过以往经验、文本资料、项目团队讨论等方式，摸索出「正确方法」做事的人。在这个阶段，学习构建软件的理论比学习构建代码更重要（后者应该在学校就掌握了）。</p>
-<p>另一方面，中级开发者假如自作主张起来，造成的危害比初级开发者更大。初级开发者只会堆砌算法，一个好的中级开发者努力方向是「模式设计」和「范畴驱动设计」。这些技能是他们搭造 OO 系统的必备过程，学习完这些理论知识如果灵活运用，可以让他们更好地构造项目。但如果僵硬使用，也会危害整个项目。</p>
-<p>有的时候，让一名中级开发者搭造系统，他耗费的时间可能比初级开发者更长，而且更糟的情况是他可能带整个团队走向迷途。很可悲的是，很多项目开发之所以走向失败，因为领队者自己只是一个中级开发者，他们缺乏和高级开发者工作的珍贵经验。团队领导自己，而且团队里其他人都没有意识到这点。</p>
-<p>中级开发者很清楚自己在团队中起到的角色，能认识到他们给团队工作带来的价值。一个好的中级开发者知道代码是用来解决问题的，而不是用来终结问题的。然而，中级开发者总容易陷入一种认知上的金字塔，那就是他们会遵循一些「正确的方式」去解决问题。</p>
-<p>一个好的中级开发者需要少而精的监管。他们在代码构造方向非常可靠，而且会在讨论设计的过程中发挥重要作用。中级开发者是团队中的「发动机」。但是，如果进一步的指导和更高级别的监管仍然是必不可少。</p>
-<h2 id="高级，甚至是大神开发者需要满足的条件"><a href="#高级，甚至是大神开发者需要满足的条件" class="headerlink" title="高级，甚至是大神开发者需要满足的条件"></a>高级，甚至是大神开发者需要满足的条件</h2><p>一个高级开发者，不夸张地说，他能记住自己每次的错误。他们甚至能在设计或者编写代码的时候，就能预见到很多失败。他们会对错误进行非常敏锐地反馈，用一种诚实的方法去评估自己的成功和失败。身为高级开发者，他会更倾向于热爱复杂问题，但会痴迷于简洁地解决它。</p>
-<p>高级开发者不会给其他开发者划分等级。与之相比，他更多的是懂得。因为懂得，所以理解每个人在每个阶段都有长处和短处。而他们也比别人更了解自己的长处和短处，力求把自己的优势最大化。</p>
-<p>一个高级开发者会懂得，所有理论基础都有背景支持。他们不会执着于「对的方式」去搭造软件，而是把理论灵活运用于实际，理论可以变通用于为客户、团队和组织需要服务的工具。</p>
-<p>高级开发者会在项目过程中，设身处地了解客户想要什么样的工作结果，以及他们的喜好。毕竟这些东西，比开发者个人的偏好和成功更重要。他们永远不会说「那不是我的工作」，也永远不会推搡任务和责任。</p>
-<p>资深开发者会懂得一件事，那就是他们的工作是为了客户提供解决方案，而不是埋头写代码。而一位资深开发者永远会把自己团队能给顾客带来多少价值，放在考核标准。而不是把自己的努力和客户需求放在对等的 PK 赛场里。</p>
-<p>诚然，因为这是一份工作，所以中间的过程总会非常枯燥和无聊。但资深开发者会退一步，思考怎么能解决和打破这些无聊的问题。他们会评估本源问题，直接解决它。或者他们会把枯燥情绪放在旁边，修复日常必须要面对的问题。</p>
-<p>资深开发者也会懂得团队工作的高效。没有人能自己做一切工作，他们会致力于提升自己团队的效率。他们把提高团队效率所做的行为，视为提高自己软实力的一部分。</p>
-<p>资深开发者懂得，领导力不仅仅只是权力，也不仅仅只是控制力。权力不是交通棒，而是一种服务意识。</p>
-<p>如果你的团队中缺乏高级开发者，那这个项目基本都无一例外走向失败。拥有中级开发者能让你做事情非常快，但是在工作中你会发现，项目不仅仅只是搭造和维护程序。最终你只能关闭网站，或者用比预期中更高昂的价格维护它。只有高级开发者能选择技术和网站，而不是任由他们来伤害你。</p>
-<p>很多需求很简单，但大多数简单需求后面，隐藏更复杂的需求。</p>
-<p>而现实情况是，我自己很厌倦以工作时限来分类开发者。是的，工作经验能告诉你很多事情，但通常提供的都是无意义的信息。甚至于这些信息，也必须要结合很多背景来判断。</p>
-<p>更重要的是，我们行业里需要新鲜的血液，需要招收那些刚从大学毕业充满激情的年轻人。而即使给程序员划分种类，也不可仅仅只看工作经验。实际上我们招收程序员前，应该先思考团队都需要那些人才。毕竟，我们招收的人才是为团队服务。当你招聘到错误的人选，不过是给团队和项目帮倒忙。</p>
-<p>本文来源：<a href="http://mattbriggs.net/blog/2015/06/01/the-role-of-a-senior-developer/" target="_blank" rel="external">mattbriggs</a> 译文创见首发 由TECH2IPO/创见 假冒爱丽丝编译</p>
+<h2 id="load"><a href="#load" class="headerlink" title="load"></a>load</h2><p>Apple文档是这样描述的</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">当类（Class）或者类别（Category）加入Runtime中时（就是被引用的时候）。</div><div class="line">实现该方法，可以在加载时做一些类特有的操作。</div><div class="line"></div><div class="line">Discussion</div><div class="line"></div><div class="line">The <span class="keyword">load</span> message <span class="keyword">is</span> sent <span class="keyword">to</span> classes <span class="keyword">and</span> categories that <span class="keyword">are</span> <span class="keyword">both</span> dynamically loaded <span class="keyword">and</span> statically linked, but <span class="keyword">only</span> <span class="keyword">if</span> the newly loaded <span class="keyword">class</span> <span class="keyword">or</span> <span class="keyword">category</span> implements a method that can respond.</div><div class="line"></div><div class="line">The <span class="keyword">order</span> <span class="keyword">of</span> initialization <span class="keyword">is</span> <span class="keyword">as</span> <span class="keyword">follows</span>:</div><div class="line"></div><div class="line">All initializers <span class="keyword">in</span> <span class="keyword">any</span> framework you <span class="keyword">link</span> to.</div><div class="line">调用所有的Framework中的初始化方法</div><div class="line"></div><div class="line">All +<span class="keyword">load</span> methods <span class="keyword">in</span> your image.</div><div class="line">调用所有的+<span class="keyword">load</span>方法</div><div class="line"></div><div class="line">All C++ <span class="keyword">static</span> initializers <span class="keyword">and</span> C/C++ <span class="keyword">attribute</span>(<span class="keyword">constructor</span>) functions <span class="keyword">in</span> your image.</div><div class="line">调用C++的静态初始化方及C/C++中的<span class="keyword">attribute</span>(<span class="keyword">constructor</span>)函数</div><div class="line"></div><div class="line">All initializers <span class="keyword">in</span> frameworks that <span class="keyword">link</span> <span class="keyword">to</span> you.</div><div class="line">调用所有链接到目标文件的framework中的初始化方法</div><div class="line"></div><div class="line"><span class="keyword">In</span> addition:</div><div class="line"></div><div class="line">A <span class="keyword">class</span>’s +<span class="keyword">load</span> method <span class="keyword">is</span> called <span class="keyword">after</span> all <span class="keyword">of</span> its superclasses’ +<span class="keyword">load</span> methods.</div><div class="line">一个类的+<span class="keyword">load</span>方法在其父类的+<span class="keyword">load</span>方法后调用</div><div class="line"></div><div class="line">A <span class="keyword">category</span> +<span class="keyword">load</span> method <span class="keyword">is</span> called <span class="keyword">after</span> the <span class="keyword">class</span>’s own +<span class="keyword">load</span> method.</div><div class="line">一个<span class="keyword">Category</span>的+<span class="keyword">load</span>方法在被其扩展的类的自有+<span class="keyword">load</span>方法后调用</div><div class="line"></div><div class="line"><span class="keyword">In</span> a custom implementation <span class="keyword">of</span> <span class="keyword">load</span> you can therefore safely message other unrelated classes <span class="keyword">from</span> the same image, but <span class="keyword">any</span> <span class="keyword">load</span> methods implemented <span class="keyword">by</span> those classes may <span class="keyword">not</span> have run yet.</div><div class="line">在+<span class="keyword">load</span>方法中，可以安全地向同一二进制包中的其它无关的类发送消息，但接收消息的类中的+<span class="keyword">load</span>方法可能尚未被调用。</div></pre></td></tr></table></figure>
+<p>文档地址:<a href="https://developer.apple.com/reference/objectivec/nsobject/1418815-load?language=objc" target="_blank" rel="external">https://developer.apple.com/reference/objectivec/nsobject/1418815-load?language=objc</a></p>
+<h3 id="load函数调用特点如下"><a href="#load函数调用特点如下" class="headerlink" title="load函数调用特点如下:"></a>load函数调用特点如下:</h3><p>当类被引用进项目的时候就会执行load函数(在main函数开始执行之前）,与这个类是否被用到无关,每个类的load函数只会自动调用一次.由于load函数是系统自动加载的，因此不需要调用父类的load函数，否则父类的load函数会多次执行。</p>
+<ol>
+<li>当父类和子类都实现load函数时,父类的load方法执行顺序要优先于子类</li>
+<li>当子类未实现load方法时,不会调用父类load方法</li>
+<li>类中的load方法执行顺序要优先于类别(Category)</li>
+<li>当有多个类别(Category)都实现了load方法,这几个load方法都会执行,但执行顺序不确定(其执行顺序与类别在Compile Sources中出现的顺序一致)</li>
+<li>当然当有多个不同的类的时候,每个类load 执行顺序与其在Compile Sources出现的顺序一致</li>
+</ol>
+<h2 id="initialize"><a href="#initialize" class="headerlink" title="initialize:"></a>initialize:</h2><p>Apple文档是这样描述的</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Initializes <span class="keyword">the</span> class <span class="keyword">before</span> <span class="keyword">it</span> receives its <span class="keyword">first</span> message.</div><div class="line"></div><div class="line">在这个类接收第一条消息之前调用。</div><div class="line"></div><div class="line">Discussion</div><div class="line"></div><div class="line">The runtime sends initialize <span class="built_in">to</span> <span class="keyword">each</span> class <span class="keyword">in</span> <span class="keyword">a</span> program exactly <span class="literal">one</span> <span class="built_in">time</span> just <span class="keyword">before</span> <span class="keyword">the</span> class, <span class="keyword">or</span> <span class="keyword">any</span> class that inherits <span class="built_in">from</span> <span class="keyword">it</span>, is sent its <span class="keyword">first</span> message <span class="built_in">from</span> <span class="keyword">within</span> <span class="keyword">the</span> program. (Thus <span class="keyword">the</span> method may never be invoked <span class="keyword">if</span> <span class="keyword">the</span> class is <span class="keyword">not</span> used.) The runtime sends <span class="keyword">the</span> initialize message <span class="built_in">to</span> classes <span class="keyword">in</span> <span class="keyword">a</span> thread-safe manner. Superclasses receive this message <span class="keyword">before</span> their subclasses.</div><div class="line"></div><div class="line">Runtime在一个程序中每一个类的一个程序中发送一个初始化一次，或是从它继承的任何类中，都是在程序中发送第一条消息。（因此，当该类不使用时，该方法可能永远不会被调用。）运行时发送一个线程安全的方式初始化消息。父类的调用一定在子类之前。</div></pre></td></tr></table></figure>
+<p>文档地址:<a href="https://developer.apple.com/reference/objectivec/nsobject/1418639-initialize?language=objc" target="_blank" rel="external">https://developer.apple.com/reference/objectivec/nsobject/1418639-initialize?language=objc</a></p>
+<h3 id="initialize函数调用特点如下"><a href="#initialize函数调用特点如下" class="headerlink" title="initialize函数调用特点如下:"></a>initialize函数调用特点如下:</h3><p>initialize在类或者其子类的第一个方法被调用前调用。即使类文件被引用进项目,但是没有使用,initialize不会被调用。由于是系统自动调用，也不需要再调用 [super initialize] ，否则父类的initialize会被多次执行。假如这个类放到代码中，而这段代码并没有被执行，这个函数是不会被执行的。</p>
+<ol>
+<li>父类的initialize方法会比子类先执行</li>
+<li>当子类未实现initialize方法时,会调用父类initialize方法,子类实现initialize方法时,会覆盖父类initialize方法.</li>
+<li>当有多个Category都实现了initialize方法,会覆盖类中的方法,只执行一个(会执行Compile Sources 列表中最后一个Category 的initialize方法)</li>
+</ol>
+<h2 id="什么情况下使用"><a href="#什么情况下使用" class="headerlink" title="什么情况下使用"></a>什么情况下使用</h2><h3 id="load-1"><a href="#load-1" class="headerlink" title="+load"></a>+load</h3><p>由于调用load方法时的环境很不安全，我们应该尽量减少load方法的逻辑。另一个原因是load方法是线程安全的，它内部使用了锁，所以我们应该避免线程阻塞在load方法中</p>
+<p>load很常见的一个使用场景,交换两个方法的实现</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//摘自MJRefresh</span></div><div class="line">+ (<span class="keyword">void</span>)load</div><div class="line">&#123;</div><div class="line">    [self <span class="string">exchangeInstanceMethod1:</span><span class="meta">@selector</span>(reloadData) <span class="string">method2:</span><span class="meta">@selector</span>(mj_reloadData)];</div><div class="line">    [self <span class="string">exchangeInstanceMethod1:</span><span class="meta">@selector</span>(<span class="string">reloadRowsAtIndexPaths:</span><span class="string">withRowAnimation:</span>) <span class="string">method2:</span><span class="meta">@selector</span>(<span class="string">mj_reloadRowsAtIndexPaths:</span><span class="string">withRowAnimation:</span>)];</div><div class="line">    [self <span class="string">exchangeInstanceMethod1:</span><span class="meta">@selector</span>(<span class="string">deleteRowsAtIndexPaths:</span><span class="string">withRowAnimation:</span>) <span class="string">method2:</span><span class="meta">@selector</span>(<span class="string">mj_deleteRowsAtIndexPaths:</span><span class="string">withRowAnimation:</span>)];</div><div class="line">    [self <span class="string">exchangeInstanceMethod1:</span><span class="meta">@selector</span>(<span class="string">insertRowsAtIndexPaths:</span><span class="string">withRowAnimation:</span>) <span class="string">method2:</span><span class="meta">@selector</span>(<span class="string">mj_insertRowsAtIndexPaths:</span><span class="string">withRowAnimation:</span>)];</div><div class="line">    [self <span class="string">exchangeInstanceMethod1:</span><span class="meta">@selector</span>(<span class="string">reloadSections:</span><span class="string">withRowAnimation:</span>) <span class="string">method2:</span><span class="meta">@selector</span>(<span class="string">mj_reloadSections:</span><span class="string">withRowAnimation:</span>)];</div><div class="line">    [self <span class="string">exchangeInstanceMethod1:</span><span class="meta">@selector</span>(<span class="string">deleteSections:</span><span class="string">withRowAnimation:</span>) <span class="string">method2:</span><span class="meta">@selector</span>(<span class="string">mj_deleteSections:</span><span class="string">withRowAnimation:</span>)];</div><div class="line">    [self <span class="string">exchangeInstanceMethod1:</span><span class="meta">@selector</span>(<span class="string">insertSections:</span><span class="string">withRowAnimation:</span>) <span class="string">method2:</span><span class="meta">@selector</span>(<span class="string">mj_insertSections:</span><span class="string">withRowAnimation:</span>)];</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (<span class="keyword">void</span>)<span class="string">exchangeInstanceMethod1:</span>(SEL)method1 <span class="string">method2:</span>(SEL)method2</div><div class="line">&#123;</div><div class="line">    method_exchangeImplementations(class_getInstanceMethod(self, method1), class_getInstanceMethod(self, method2));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="initialize-1"><a href="#initialize-1" class="headerlink" title="+initialize"></a>+initialize</h3><p>initialize方法主要用来对一些不方便在编译期初始化的对象进行赋值。比如NSMutableArray这种类型的实例化依赖于runtime的消息发送，所以显然无法在编译器初始化：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// In Person.m</span></div><div class="line"><span class="comment">// int类型可以在编译期赋值</span></div><div class="line"><span class="keyword">static</span> <span class="keyword">int</span> someNumber = <span class="number">0</span>; </div><div class="line"><span class="keyword">static</span> <span class="built_in">NSMutableArray</span> *someArray;</div><div class="line">+ (<span class="keyword">void</span>)initialize &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span> == [Person <span class="keyword">class</span>]) &#123;</div><div class="line">        <span class="comment">// 不方便编译期复制的对象在这里赋值</span></div><div class="line">        someArray = [[<span class="built_in">NSMutableArray</span> alloc] init];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="load方法要点"><a href="#load方法要点" class="headerlink" title="+load方法要点"></a>+load方法要点</h3><p>当类被引用进项目的时候就会执行load函数(在main函数开始执行之前）,与这个类是否被用到无关,每个类的load函数只会自动调用一次.由于load函数是系统自动加载的，因此不需要再调用[super load]，否则父类的load函数会多次执行。</p>
+<pre><code>1. 当父类和子类都实现load函数时,父类的load方法执行顺序要优先于子类
+2. 当一个类未实现load方法时,不会调用父类load方法
+3. 类中的load方法执行顺序要优先于类别(Category)
+4. 当有多个类别(Category)都实现了load方法,这几个load方法都会执行,但执行顺序不确定(其执行顺序与类别在Compile Sources中出现的顺序一致)
+5. 当然当有多个不同的类的时候,每个类load 执行顺序与其在Compile Sources出现的顺序一致
+</code></pre><p>注意: load调用时机比较早,当load调用时,其他类可能还没加载完成,运行环境不安全. load方法是线程安全的，它使用了锁，我们应该避免线程阻塞在load方法.</p>
+<h3 id="initialize方法要点"><a href="#initialize方法要点" class="headerlink" title="+initialize方法要点"></a>+initialize方法要点</h3><p>initialize在类或者其子类的第一个方法被调用前调用。即使类文件被引用进项目,但是没有使用,initialize不会被调用。由于是系统自动调用，也不需要显式的调用父类的initialize，否则父类的initialize会被多次执行。假如这个类放到代码中，而这段代码并没有被执行，这个函数是不会被执行的。</p>
+<pre><code>1. 父类的initialize方法会比子类先执行
+2. 当子类不实现initialize方法，会把父类的实现继承过来调用一遍。在此之前，父类的方法会被优先调用一次
+3. 当有多个Category都实现了initialize方法,会覆盖类中的方法,只执行一个(会执行Compile Sources 列表中最后一个Category 的initialize方法)
+</code></pre><p>注意: 在initialize方法收到调用时,运行环境基本健全。 initialize内部也使用了锁，所以是线程安全的。但同时要避免阻塞线程，不要再使用锁</p>
 
       
     </div>
@@ -454,22 +458,26 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/load/" rel="tag">#load</a>
+          
+            <a href="/tags/initialize/" rel="tag">#initialize</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/03/NSAssert/" rel="next" title="有关NSAssert相关知识点">
-                <i class="fa fa-chevron-left"></i> 有关NSAssert相关知识点
+              <a href="/2017/11/14/lldb/" rel="next" title="lldb命令">
+                <i class="fa fa-chevron-left"></i> lldb命令
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/15/SSH/" rel="prev" title="SSH 相关知识">
-                SSH 相关知识 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -607,7 +615,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发者的高速成长期："><span class="nav-number">1.</span> <span class="nav-text">开发者的高速成长期：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中级开发者的瓶颈期间"><span class="nav-number">2.</span> <span class="nav-text">中级开发者的瓶颈期间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级，甚至是大神开发者需要满足的条件"><span class="nav-number">3.</span> <span class="nav-text">高级，甚至是大神开发者需要满足的条件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#load"><span class="nav-number">1.</span> <span class="nav-text">load</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#load函数调用特点如下"><span class="nav-number">1.1.</span> <span class="nav-text">load函数调用特点如下:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#initialize"><span class="nav-number">2.</span> <span class="nav-text">initialize:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#initialize函数调用特点如下"><span class="nav-number">2.1.</span> <span class="nav-text">initialize函数调用特点如下:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么情况下使用"><span class="nav-number">3.</span> <span class="nav-text">什么情况下使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#load-1"><span class="nav-number">3.1.</span> <span class="nav-text">+load</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#initialize-1"><span class="nav-number">3.2.</span> <span class="nav-text">+initialize</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#load方法要点"><span class="nav-number">4.1.</span> <span class="nav-text">+load方法要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#initialize方法要点"><span class="nav-number">4.2.</span> <span class="nav-text">+initialize方法要点</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
@@ -749,9 +757,9 @@ translateInitilization();
 
     <script type="text/javascript">
       var disqus_shortname = 'qing-bo-zhi';
-      var disqus_identifier = '2016/03/08/The-Role-of-a-Senior-Developer/';
-      var disqus_title = '【转】一个大神开发者的使命感究竟应该是什么';
-      var disqus_url = 'http://qingbo.site/2016/03/08/The-Role-of-a-Senior-Developer/';
+      var disqus_identifier = '2017/11/19/load-and-initialize/';
+      var disqus_title = 'NSObject的load和initialize方法';
+      var disqus_url = 'http://qingbo.site/2017/11/19/load-and-initialize/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
