@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[如何用reveal查看第三方app（适用于新版reveal）]]></title>
+      <url>%2F2018%2F05%2F17%2Fhow-to-reveal-other-apps-newest%2F</url>
+      <content type="text"><![CDATA[本文适用于对reveal有一定了解的，不仅仅局限查看自己开发的app，更多的是“窥视”第三方优秀的app 大致有如下几步 越狱手机一台 通过越狱iPhone上的Cydia软件，下载并安装Reveal Loader等相关软件 MacOS和该iPhone同处于一个WiFi环境下 手机越狱我有一个闲置的手机正好可以派上用场，iPhone4s（iOS 9.3.5），越狱工具用的是Phoenix4，具体方式可见iOS 9.3.5越狱 安装Cydia里相关软件 OpenSSH Cydia Substrate Reveal 安装过程我遇到的问题有： 在Cydia 里搜索不出Reveal Loader，解决方法：就点下面的“软件源”，选择“BigBoss”,选择“全部软件包”，点右边R的字母，去一个个找Reveal Loader，可以找到的，如果软件包没有任何数据的话，就先刷新下； 通过SSH连接到手机后并未在/Library目录下发现RHRevealLoader文件夹，解决方法：直接新建一个该名称的文件夹； 新版的Reveal库里未找到libReveal.dylib的文件，原因：自从Reveal更新到version 2以后，就没有dylib库了，都是RevealServer.framework，解决方案：将RevealServer.framework里的RevealServer文件直接改名为libReveal.dylib，并且将其放置手机的/Library/RHRevealLoader/目录下； 1scp /Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries/RevealServer.framework/RevealServer root@192.168.X.X:/Library/RHRevealLoader/libReveal.dylib 密码默认是：alpine ， 上传成功后会显示%100字样。 192.168.X.X：你的手机ip地址 到此为止，准备工作做完了，重启下Reveal 然后打开 手机打开 –&gt; 通用 –&gt; Reveal –&gt; Enabled Applications –&gt; 勾选你需要调试的app 参考链接 iOS逆向Reveal查看任意App的界面 RHRevealLoader替换library 逆向工程 - Reveal、IDA、Hopper、HTTPS抓包 等 iOS攻防 - （一）Reveal 调试别人开发的app，如微信]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[如何顺时针螺旋输出矩阵数组]]></title>
       <url>%2F2018%2F01%2F24%2Fhow-to-clockwise-helix-output-a-matrix%2F</url>
       <content type="text"><![CDATA[昨天展示了如何生成一个顺时针旋转矩阵数组(查看)，今天就来逆向思维一下，如何顺时针螺旋输出一个矩阵。 123456789101112131415161718192021222324252627282930313233343536373839#include &lt;stdio.h&gt;int arr[5][5] = &#123; &#123; 1, 2, 3, 4, 5&#125;, &#123; 16, 17, 18, 19, 6&#125;, &#123; 15, 24, 25, 20, 7&#125;, &#123; 14, 23, 22, 21, 8&#125;, &#123; 13, 12, 11, 10, 9&#125;,&#125;;int main(int argc, const char * argv[]) &#123; // 初始的区间坐标，根据初始矩阵的大小设定 int startX = 0, endX = 4; int startY = 0, endY = 4; while(startX&lt;=endX &amp;&amp; startY&lt;=endY) // 循环条件 &#123; int i; for(i=startX; i&lt;=endX; i++)&#123; // 输出上边的行 printf("%d ",arr[startY][i]); &#125; startY ++; // 行的开始坐标增加 for(i=startY; i&lt;=endY; i++)&#123; // 输出右边的列 printf("%d ",arr[i][endX]); &#125; endX --; // 列的结束坐标减小 for(i=endX; i&gt;=startX; i--)&#123; // 输出下边边的行 printf("%d ",arr[endY][i]); &#125; endY --; // 行的结束坐标减小 for(i=endY; i&gt;=startY; i--)&#123; // 输出左边的列 printf("%d ",arr[i][startX]); &#125; startX ++; // 列的开始坐标增加 &#125; printf("\n"); return 0;&#125; 上述5*5的螺旋矩阵运行后的结果 扩展阅读 如何生成一个旋转矩阵数组]]></content>
